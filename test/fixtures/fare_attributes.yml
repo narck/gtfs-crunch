@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  fare_id: 1
+  price: 
+  currency_type: MyString
+  payment_method: 1
+  transfers: 1
+  transfer_duration: 
+
+two:
+  fare_id: 1
+  price: 
+  currency_type: MyString
+  payment_method: 1
+  transfers: 1
+  transfer_duration: 
