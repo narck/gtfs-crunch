@@ -16,23 +16,32 @@ class GtfsController < ApplicationController
 
     while entry = gtfs_zip.get_next_entry
       if entry.to_s == 'shapes.txt'
-        fields = nil
-
-        CSV::parse(entry.get_input_stream.read) do |row|
-          if fields.nil?
-            fields = row
-          else
-            params = {}
-            fields.each_with_index do |field, i|
-              params[field] = row[i]
-            end
-            kwargs = params.symbolize_keys
-            Shape.create(**kwargs)
-          end
-        end
+        create_gtfs_objects(entry.get_input_stream.read)
       end
     end
 
     render :json => [sha_digest, res.msg]
+  end
+
+  private
+  def create_gtfs_objects(csv_string)
+    fields = nil
+
+    CSV::parse(csv_string) do |row|
+      if fields.nil?
+        fields = row
+      else
+        params = {}
+
+        ActiveRecord::Base.transaction do
+          fields.each_with_index do |field, i|
+            params[field] = row[i]
+          end
+
+          Shape.create(**params.symbolize_keys)
+        end
+      end
+    end
+
   end
 end
