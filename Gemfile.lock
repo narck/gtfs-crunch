@@ -27,6 +27,8 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.1)
       tzinfo (~> 1.1)
+    acts_as_singleton (0.0.8)
+      activerecord (>= 3.1.0)
     arel (5.0.1.20140414130214)
     builder (3.2.2)
     coffee-rails (4.0.1)
@@ -36,6 +38,9 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.10.0)
+    debase (0.2.1)
+      debase-ruby_core_source
+    debase-ruby_core_source (0.8.4)
     erubis (2.7.0)
     execjs (2.6.0)
     hike (1.2.3)
@@ -74,6 +79,8 @@ GEM
     rake (10.5.0)
     rdoc (4.2.2)
       json (~> 1.4)
+    ruby-debug-ide (0.6.0)
+      rake (>= 0.8.1)
     rubyzip (1.1.7)
     sass (3.2.19)
     sass-rails (4.0.5)
@@ -109,11 +116,14 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  acts_as_singleton
   coffee-rails (~> 4.0.0)
+  debase
   jbuilder (~> 2.0)
   jquery-rails
   pg
   rails (= 4.1.6)
+  ruby-debug-ide
   rubyzip
   sass-rails (~> 4.0.3)
   sdoc (~> 0.4.0)
