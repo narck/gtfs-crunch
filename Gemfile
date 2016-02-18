@@ -28,6 +28,9 @@ gem 'spring',        group: :development
 
 # Other
 gem 'rubyzip', require: 'zip'
+gem 'acts_as_singleton'
+gem 'debase', group: :development
+gem 'ruby-debug-ide', group: :development
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
