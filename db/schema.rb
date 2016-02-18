@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160218081648) do
+ActiveRecord::Schema.define(version: 20160218123839) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -91,6 +91,7 @@ ActiveRecord::Schema.define(version: 20160218081648) do
     t.string   "route_text_color"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "route_color"
   end
 
   create_table "shapes", force: true do |t|
@@ -138,7 +139,7 @@ ActiveRecord::Schema.define(version: 20160218081648) do
   create_table "trips", force: true do |t|
     t.integer  "route_id"
     t.integer  "service_id"
-    t.integer  "trip_id"
+    t.integer  "trip_id",               limit: 8
     t.string   "trip_headsign"
     t.string   "trip_short_name"
     t.integer  "direction_id"
