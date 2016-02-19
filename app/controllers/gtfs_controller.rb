@@ -25,16 +25,16 @@ class GtfsController < ApplicationController
 
 
     while (entry = gtfs_zip.get_next_entry)
-      if entry.to_s == 'shapes.txt'
-        create_gtfs_objects(entry.get_input_stream.read)
-      end
+        cls_name = entry.to_s.split(".").first.singularize.capitalize
+        cls = Object.const_get(cls_name)
+        create_gtfs_objects(cls, entry.get_input_stream.read)
     end
 
     render :json => [sha_digest, response.msg]
   end
 
   private
-  def create_gtfs_objects(csv_string)
+  def create_gtfs_objects(cls, csv_string)
     fields = nil
 
     ActiveRecord::Base.transaction do
@@ -48,7 +48,7 @@ class GtfsController < ApplicationController
               params[field] = row[i]
             end
 
-            Shape.create(**params.symbolize_keys)
+            cls.create(**params.symbolize_keys)
         end
       end
     end
