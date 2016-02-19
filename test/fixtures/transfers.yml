@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  from_stop_id: 1
+  to_stop_id: 1
+  min_transfer_time: 1
+
+two:
+  from_stop_id: 1
+  to_stop_id: 1
+  min_transfer_time: 1
