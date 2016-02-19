@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160218123839) do
+ActiveRecord::Schema.define(version: 20160219092219) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -105,9 +105,9 @@ ActiveRecord::Schema.define(version: 20160218123839) do
   end
 
   create_table "stop_times", force: true do |t|
-    t.integer  "trip_id"
-    t.time     "arrival_time"
-    t.time     "departure_time"
+    t.integer  "trip_id",             limit: 8
+    t.string   "arrival_time",        limit: nil
+    t.string   "departure_time",      limit: nil
     t.integer  "stop_id"
     t.integer  "stop_sequence"
     t.string   "stop_headsign"
@@ -134,6 +134,15 @@ ActiveRecord::Schema.define(version: 20160218123839) do
     t.integer  "wheelchair_boarding"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "transfers", force: true do |t|
+    t.integer  "from_stop_id"
+    t.integer  "to_stop_id"
+    t.integer  "min_transfer_time"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "transfer_type"
   end
 
   create_table "trips", force: true do |t|
