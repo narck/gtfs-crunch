@@ -58,6 +58,11 @@ GEM
     minitest (5.8.4)
     multi_json (1.11.2)
     pg (0.18.4)
+    postgres-copy (1.0.0)
+      activerecord (>= 4.0)
+      pg (>= 0.17)
+      rails (>= 4.0)
+      responders
     rack (1.5.5)
     rack-test (0.6.3)
       rack (>= 1.0)
@@ -79,6 +84,8 @@ GEM
     rake (10.5.0)
     rdoc (4.2.2)
       json (~> 1.4)
+    responders (1.1.2)
+      railties (>= 3.2, < 4.2)
     ruby-debug-ide (0.6.0)
       rake (>= 0.8.1)
     rubyzip (1.1.7)
@@ -122,6 +129,7 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   pg
+  postgres-copy
   rails (= 4.1.6)
   ruby-debug-ide
   rubyzip
