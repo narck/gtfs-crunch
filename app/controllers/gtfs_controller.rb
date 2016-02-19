@@ -25,32 +25,12 @@ class GtfsController < ApplicationController
 
 
     while (entry = gtfs_zip.get_next_entry)
-        cls_name = entry.to_s.split(".").first.singularize.capitalize
+        cls_name = entry.to_s.split('.').first.split('_').collect {|w| w.singularize.capitalize}.join
         cls = Object.const_get(cls_name)
-        create_gtfs_objects(cls, entry.get_input_stream.read)
+        cls.copy_from(entry.get_input_stream)
     end
 
     render :json => [sha_digest, response.msg]
   end
 
-  private
-  def create_gtfs_objects(cls, csv_string)
-    fields = nil
-
-    ActiveRecord::Base.transaction do
-      CSV::parse(csv_string) do |row|
-        if fields.nil?
-          fields = row
-        else
-          params = {}
-
-            fields.each_with_index do |field, i|
-              params[field] = row[i]
-            end
-
-            cls.create(**params.symbolize_keys)
-        end
-      end
-    end
-  end
 end
