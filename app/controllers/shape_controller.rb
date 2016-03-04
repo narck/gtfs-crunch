@@ -1,3 +1,5 @@
+require_relative '../../app/library/store/shapes'
+
 class ShapeController < ApplicationController
 
   def get
