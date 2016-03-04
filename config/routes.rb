@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   get 'shape/:id', to: 'shape#get', as: :shape
   get 'shape/:id/parsed', to: 'shape#parsed', as: :parsed_shape
   get 'line/:route_short_name/shape', to: 'line#shape', as: :line_shape
-  get 'gtfs/update', to: 'gtfs#update', as: :update
+  get 'gtfs/status', to: 'gtfs#status', as: :gtfs_status
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
